@@ -5,7 +5,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin #
 from django.contrib.messages.views import SuccessMessageMixin #
 #from django.views.generic.edit import FormView #
 from .models import Lembrete #
-from .forms import LembreteForm1Filtro
+from .forms import LembreteForm1Filtro, LembreteFormCreateUpdate
 from datetime import datetime #
 #import os 
 from django.core.paginator import Paginator # Para obter o total de páginas da paginação da ListView
@@ -15,9 +15,10 @@ from django.core.paginator import Paginator # Para obter o total de páginas da 
 #CREATE
 class LembreteCreate(LoginRequiredMixin,SuccessMessageMixin,CreateView):
     model = Lembrete
-    fields = ['titulo','conteudo','visivel'] #removi os campos 'usuario' e 'nivel_escolar' e pego eles no def form_valid
+    #fields = ['titulo','conteudo','visivel'] #TAMBÉM não pode definir aqui se já é definido no form. Removi os campos 'usuario' e 'nivel_escolar' e pego eles no def form_valid
     success_url = reverse_lazy('app_lembrete:lembrete_create')
     success_message = ''
+    form_class = LembreteFormCreateUpdate # Quando usa form_class não pode definir fields aqui na view
 
     def get_context_data(self, **kwargs):
         context = super(LembreteCreate, self).get_context_data(**kwargs)
@@ -105,10 +106,11 @@ class LembreteList(LoginRequiredMixin, ListView):
 #UPDATE 
 class LembreteUpdate(LoginRequiredMixin,UpdateView):
     model = Lembrete
-    fields = ['titulo','conteudo','visivel'] # removi os campos 'usuario' e 'nivel_escolar' e pego eles no def form_valid
+    #fields = ['titulo','conteudo','visivel'] # removi os campos 'usuario' e 'nivel_escolar' e pego eles no def form_valid
     # Inicialmente coloquei essa success_url, mas no método form_valid eu retorno para página da paginação atual e funciona, mas na deleção não (na deleção tive que usar o dispatch)
     success_url = reverse_lazy('app_lembrete:lembrete_read') # se colocar lembrete_update para ver mensagens dá erro, por isso tirei o SuccessMessageMixin
     #success_message = ''
+    form_class = LembreteFormCreateUpdate
 
     def get_context_data(self, **kwargs):
         context = super(LembreteUpdate, self).get_context_data(**kwargs)

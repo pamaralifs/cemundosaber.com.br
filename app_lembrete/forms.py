@@ -10,3 +10,11 @@ class LembreteForm1Filtro(forms.Form):
     class Meta:
         model = Lembrete
         fields = ['id','titulo','arquivo','visivel']
+
+class LembreteFormCreateUpdate(forms.ModelForm):
+    conteudo = forms.CharField(widget=forms.Textarea(attrs={'rows':'3','columns':'10'}))
+    
+    class Meta:
+        fields = ['id','titulo','conteudo','visivel']
+        model = Lembrete
+        #exclude = ['id']
