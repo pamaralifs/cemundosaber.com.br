@@ -3,10 +3,12 @@
 *.pyc
 *~
 __pycache__
+__pycache__/
 /static
 /documentos
 /media
 
+.htaccess
 .DS_Store
 db.sqlite3
 acessos.txt
