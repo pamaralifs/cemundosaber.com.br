@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'app_serie_escolar', #
     'app_material', #
     'app_lembrete', #
+    # https://github.com/un1t/django-cleanup
+    # Excelente, porém não exclui a pasta (fica vazia, fazer rotina cron para excluir depois)
+    'django_cleanup.apps.CleanupConfig', # Sempre devemser a última app registrada conforme documentação
 ]
 
 MIDDLEWARE = [
