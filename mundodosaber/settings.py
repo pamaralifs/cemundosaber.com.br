@@ -23,11 +23,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '%52(!fxt^yfa_3$3*xhfy&*oliuedi2!*wukk+n$6^e75hp(@$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-#DEBUG = False
+#DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['localhost','127.0.0.1','*','cemundosaber.pythoanywhere.com'] #
-ALLOWED_HOSTS = ['localhost','127.0.0.1','*','cemundosaber.pythonanywhere.com','cemundosaber.com.br'] #
+#ALLOWED_HOSTS = ['localhost','127.0.0.1','*','cemundosaber.pythoanywhere.com','cemundosaber.com.br',] #
+ALLOWED_HOSTS = ['localhost','127.0.0.1','cemundosaber.com.br',] #
 
 # Application definition
 
@@ -128,7 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 # VARIÁVEIS DE AMBIENTE
 STATIC_URL = '/static/' #
-
+#STATIC_ROOT = 'static/'
 # https://stackoverflow.com/questions/24022558/differences-between-staticfiles-dir-static-root-and-media-root
 # STATIC_ROOT = os.path.join(BASE_DIR, 'static/') # Não serve em desenvolvimento
 # Serve apenas para produção, não funciona em desenvolvimento, nem mesmo que adicione no url path se debug true, como o caso de arquivos de media
